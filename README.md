@@ -2,6 +2,8 @@
 
 Download videos from many of the most popular video streaming sites.
 
+![Screenshot](https://raw.github.com/jasonhinkle/Tube-DL/master/screenshot.png)
+
 # Building
 
 * Open project in Adobe Flash Builder
