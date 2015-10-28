@@ -6,10 +6,10 @@ Download videos from many of the most popular video streaming sites. Tube-DL is 
 
 # Building
 
+* Ensure Apache Flex version 4.14.1 or higher is installed
 * Open project in Adobe Flash Builder
-* Requires Apache Flex version 4.14.1 or higher
-
-Note: This app has only been built and tested on OSX, however is should run on Windows
+* In project properties, double check that 4.14.1 is configured as the Flex compiler
+* Run or Debug as an AIR Desktop Application
 
 # Usage
 
