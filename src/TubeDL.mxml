@@ -24,7 +24,7 @@
 			
 			private var process:NativeProcess;
 			private var executable:File;
-			private var binaryDir:String;
+			private var ffmpegExePath:String;
 			private var outputName:String = '';
 			
 			[Bindable]
@@ -33,7 +33,7 @@
 			public const STATUS_DONE:int = 0;
 			public const STATUS_DOWNLOADING:int = 1;
 			public const STATUS_CONVERTING:int = 2;
-
+			
 			
 			public function onCreationComplete(event:FlexEvent):void
 			{
@@ -47,7 +47,8 @@
 				var exeName:String = this.isWindows ? 'youtube-dl.exe' : 'youtube-dl';
 				var exePath:String = this.isWindows ? 'assets\\bin\\win\\' : 'assets/bin/osx/';
 				
-				this.binaryDir = File.applicationDirectory.resolvePath(exePath).nativePath + File.separator + 'ffmpeg';
+				this.ffmpegExePath = File.applicationDirectory.resolvePath(exePath).nativePath 
+					+ File.separator + (this.isWindows ? 'ffmpeg.exe' : 'ffmpeg');
 				this.executable = File.applicationDirectory.resolvePath(exePath + exeName);
 				
 			}
@@ -60,7 +61,7 @@
 			private function checkClipboard():void
 			{
 				var url:String = Clipboard.generalClipboard.getData(ClipboardFormats.URL_FORMAT) as String;
-		
+				
 				if (url && url != urlTxt.text) {
 					Alert.show('A URL was detected in your clipboard. Would you like to use it?',
 						'URL Detected',
@@ -91,7 +92,7 @@
 				startupInfo.executable = this.executable;
 				startupInfo.arguments = arguments;
 				startupInfo.workingDirectory = File.desktopDirectory;
-
+				
 				this.process.start(startupInfo);
 				this.processStatus = STATUS_DOWNLOADING;
 			}
@@ -192,9 +193,9 @@
 			private function showResult(msg:String):void
 			{
 				resultTxt.appendText(StringUtil.trim(msg) + "\n");
-//				this.resultTxt.text += StringUtil.trim(msg) + "\n";
-//				this.resultTxt.scroller.verticalScrollBar.value = this.resultTxt.scroller.verticalScrollBar.maximum;
-//				this.resultTxt.validateNow();
+				//				this.resultTxt.text += StringUtil.trim(msg) + "\n";
+				//				this.resultTxt.scroller.verticalScrollBar.value = this.resultTxt.scroller.verticalScrollBar.maximum;
+				//				this.resultTxt.validateNow();
 			}
 			
 			protected function goBtn_clickHandler(event:MouseEvent):void
@@ -211,7 +212,7 @@
 				if ('video' != format) {
 					args.unshift(
 						'--prefer-ffmpeg',
-						'--ffmpeg-location=' + this.binaryDir + '', 
+						'--ffmpeg-location=' + this.ffmpegExePath + '', 
 						'--extract-audio',
 						'--audio-format=' + format
 					);
@@ -256,10 +257,10 @@
 				includeInLayout="{processStatus == STATUS_CONVERTING}"
 				backgroundColor="{ColorUtils.Amethyst}">
 			<s:Label id="convertLabel"
-				text="Converting Audio..."
-				textAlign="center"
-				width="100%"
-				color="{ColorUtils.Clouds}"/>
+					 text="Converting Audio..."
+					 textAlign="center"
+					 width="100%"
+					 color="{ColorUtils.Clouds}"/>
 		</mx:Box>
 		
 		<s:TextArea id="resultTxt"
