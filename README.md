@@ -1,6 +1,6 @@
 # Tube-DL
 
-Download videos from many of the most popular video streaming sites.
+Download videos from many of the most popular video streaming sites. Tube-DL is a simplified UI for the excellent command-line application youtube-dl.
 
 ![Screenshot](https://raw.github.com/jasonhinkle/Tube-DL/master/screenshot.png)
 
@@ -28,5 +28,4 @@ Note: This app has only been built and tested on OSX, however is should run on W
 
 ## License
 
-GPL License is required with inclusion of ffmpeg (used only for audio conversion).
-If you remove ffmpeg, the remaining code may be distributed under the terms of the LGPL.
+GPL License is required with inclusion of ffmpeg (used only for audio conversion). If you remove ffmpeg, the remaining code may be distributed under the terms of the LGPL.
