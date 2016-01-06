@@ -69,7 +69,7 @@
 						null,
 						function(evt:CloseEvent):void {
 							if (evt.detail == Alert.YES) {
-								urlTxt.text = url;
+								urlTxt.text = url.split("\n")[0];
 								clearResult();
 							}
 						}
@@ -121,10 +121,15 @@
 					if (line.indexOf('[ffmpeg] Destination:') > -1) {
 						this.outputName = StringUtil.trim(line.substr(22));
 						this.processStatus = STATUS_CONVERTING;
+					}
+					
+					if (line.indexOf('[ffmpeg] Merging formats into ') > -1) {
+						this.outputName = StringUtil.trim( line.substr(31,line.length-32) );
+						this.processStatus = STATUS_CONVERTING;
 					}	
 					
 					if (line.indexOf('has already been downloaded') > -1) {
-						this.outputName = StringUtil.trim(line.substr(11).replace(' has already been downloaded',''));
+						this.outputName = StringUtil.trim(line.substr(11).replace(' has already been downloaded','').replace(' and merged','') );
 					}
 				}
 				
