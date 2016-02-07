@@ -2,12 +2,20 @@
 
 @import url("layout.css");
 
+body {
+  background-image: url('../images/background-burn.jpg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
 header {
-  background-image: url('../images/background-road.png');
+  /*
+  background-image: url('../images/background-film.jpg');
   background-color: #666;
+  border-bottom: solid 1px #444;
+  */
   text-align: center;
   padding-top: 22px;
-  border-bottom: solid 1px #444;
 }
 
 header #logo-container {
@@ -28,8 +36,18 @@ main {
 
 }
 
+#download-options {
+  background-color: rgba(0,0,0,0.4);
+  border: solid 1px #222;
+  border-radius: 4px;
+  padding: 10px 0px 10px 0px;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding: 15px 20px 15px 20px;
+}
+
 #download-options .row {
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 #keep-original-lbl {
@@ -77,9 +95,15 @@ main {
   display: none;
 }
 
+#mp3-options {
+  background-color: rgba(0,0,0,0.3);
+  border: solid 1px #222;
+  border-radius: 4px;
+  padding: 10px 0px 10px 0px;
+}
+
 footer {
-  background-color: #f5f5f5;
-  border-top: solid 1px #eee;
+  background-color: rgba(255,255,255,0.1);
 }
 
 #footer-right {
