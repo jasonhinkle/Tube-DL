@@ -1,5 +1,6 @@
 /**
- * main.js
+ * main.js contains the main application logic and is instantiated
+ * by index.html
  */
 
 // local libraries
