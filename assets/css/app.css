@@ -72,6 +72,7 @@ main {
   width: 100%;
   text-align: right;
   margin-top: 7px;
+  text-shadow: 1px 1px #000;
 }
 
 .mini-cb-container {
@@ -90,6 +91,11 @@ main {
 #download-btn-container {
   margin-top: 20px;
   text-align: center;
+}
+
+/* switch control on dark background shows through a bit */
+.bootstrap-switch {
+  background-color: #fff;
 }
 
 .hide-ui {

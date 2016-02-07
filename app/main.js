@@ -242,6 +242,7 @@ function downloadVideo() {
       ui.setStatus(ui.STATUS_DONE);
       ui.out('Download cancelled', 'danger');
       ui.setProgress(100);
+      ui.warn('Download Cancelled');
       cleanupFiles();
     }
     else if (ui.getDownloadFormat() == 'Video') {
@@ -360,6 +361,7 @@ function convertToMp3() {
 
     if (cancelRequested) {
       ui.out('Conversion cancelled','danger');
+      ui.warn('Conversion Cancelled');
       cleanupFiles(false,true);
     }
     else {
