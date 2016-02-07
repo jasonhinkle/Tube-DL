@@ -2,8 +2,8 @@
 
 Download videos from many of the most popular video streaming sites. Tube-DL is a simplified UI for the excellent command-line application [youtube-dl](https://rg3.github.io/youtube-dl/).
 
-![Screenshot](https://raw.github.com/jasonhinkle/Tube-DL/master/screenshot-1.png)
-![Screenshot](https://raw.github.com/jasonhinkle/Tube-DL/master/screenshot-2.png)
+![Screenshot](https://raw.github.com/jasonhinkle/Tube-DL/master/assets/images/screenshot-1.png)
+![Screenshot](https://raw.github.com/jasonhinkle/Tube-DL/master/assets/images/screenshot-2.png)
 
 # Usage
 
