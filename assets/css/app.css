@@ -15,7 +15,8 @@ header {
   border-bottom: solid 1px #444;
   */
   text-align: center;
-  padding-top: 22px;
+  padding-top: 32px;
+  opacity: 0.8;
 }
 
 header #logo-container {
