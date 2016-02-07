@@ -15,12 +15,13 @@ Download videos from many of the most popular video streaming sites. Tube-DL is 
 
 # Building From Source
 
-*The project is written in Javascript running in a node environment and packaged for the desktop using Electron.*
+*The project is written in Javascript running in [node](https://nodejs.org/) and packaged for the desktop using [Electron](http://electron.atom.io/).*
 
 1. Ensure node and npm are installed and properly configured
-2. At the command line run `npm install`
-3. To start in debug mode run `npm start`
-4. To build and package run `npm run build`
+2. At the command line, change directory to `Tube-DL` folder
+3. Run `npm install` to download the required libraries
+4. To start in debug mode run `npm start`
+5. To build and package the app run `npm run build`
 
 ## Libraries and Components Used
 
@@ -30,4 +31,4 @@ Download videos from many of the most popular video streaming sites. Tube-DL is 
 
 ## License
 
-GPL License is required with inclusion of ffmpeg (used only for audio conversion). If you remove ffmpeg, the remaining code may be distributed under the terms of the MIT.
+GPL-3.0 License is required with inclusion of ffmpeg (used only for audio conversion). If you remove ffmpeg, the remaining code may be distributed under the terms of the MIT.
