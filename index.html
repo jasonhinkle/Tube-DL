@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+	<base href="./" />
+	<meta http-equiv="X-Frame-Options" content="deny">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="verysimple.com">
+
+	<!--
+	<link rel="icon" href="assets/images/favicon.ico">
+	<link rel="apple-touch-icon" href="/assets/images/apple-touch-icon-60x60.png">
+  -->
+
+	<title>Tube DL</title>
+
+	<!-- styles -->
+	<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="node_modules/bootstrap-slider/dist/css/bootstrap-slider.min.css">
+  <link rel="stylesheet" href="node_modules/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.min.css">
+	<link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="assets/css/circle.css" />
+  <link rel="stylesheet" href="assets/css/app.css" />
+
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+		<script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		<script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+
+	</head>
+
+	<body>
+
+    <header>
+      <div id="logo-container" class="img-circle"><i id="logo" class="fa fa-download"></i></div>
+    </header>
+
+		<main class="container-fluid">
+
+      <form class="form">
+
+        <div id="download-options" class="container-fluid">
+
+          <div class="row">
+            <div class="col-xs-3"><label for="url-input">Video URL</label></div>
+            <div class="col-xs-9"><input id="url-input" type="text" class="form-control"
+              placeholder="Paste video url: http://vido.url/watch?v=xyz"
+              value=""></div>
+          </div> <!-- /row -->
+
+          <!--
+          <div class="row">
+            <div class="col-xs-3"><label for="url-input">Authentication</label></div>
+            <div class="col-xs-4">
+              <input id="auth-username" type="text" class="form-control" placeholder="Username" value="">
+            </div>
+            <div class="col-xs-5">
+              <input id="auth-password" type="password" class="form-control" placeholder="Password" value="">
+            </div>
+          </div> --> <!-- /row -->
+
+          <div class="row">
+            <div class="col-xs-3"><label for="download-format-cb">Save As</label></div>
+            <div class="col-xs-9">
+              <input type="checkbox" id="download-format-cb" checked="checked">
+            </div>
+          </div> <!-- /row -->
+
+          <div id="mp3-options" class="hide-ui well">
+
+            <div class="row">
+              <div class="col-xs-3"><label for="url-input">MP3 Quality</label></div>
+              <div class="col-xs-9 slider-container">
+                <span class='slider-low-lbl'>Low</span>
+                <input id="quality-slider" data-slider-id='quality-slider' type="text" data-slider-min="2" data-slider-max="6" data-slider-value="2"/>
+                <span class='slider-high-lbl'>High</span>
+              </div>
+            </div> <!-- /row -->
+
+            <div class="row">
+              <div class="col-xs-3"><label for="keep-original-cb">Keep Video File</label></div>
+              <div class="col-xs-9 mini-cb-container"><input id="keep-original-cb" type="checkbox"></div>
+            </div> <!-- /row -->
+
+          </div> <!-- /mp3-options -->
+
+        </div> <!-- /download-options -->
+
+        <div id="download-btn-container" class="form-group">
+          <button id="download-btn" class="btn btn-danger btn-lg"><i class="fa fa-download"></i> Download</button>
+        </div>
+      </form>
+
+		</main>
+
+    <footer>
+      <div class="row">
+        <div id="footer-left" class="col-xs-6">
+          Version <span id="version"></span>
+        </div>
+        <div id="footer-right" class="col-xs-6">
+          <i class="fa fa-floppy-o"></i> <a href="http://verysimple.com/" class="external-link">VerySimple.com</a>
+        </div>
+      </div> <!-- /row -->
+
+    </footer>
+
+    <!-- ########## MODAL ########## -->
+
+    <div id="download-modal" class="modal fade" tabindex="-1" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 id="download-modal-title" class="modal-title"></h4>
+          </div>
+          <div class="modal-body">
+
+            <div class="row dials-container">
+              <!-- -->
+              <div class="col-xs-3">
+                <div id="progress-video" class="c100 p0 small">
+                  <span>0%</span>
+                  <div class="slice">
+                    <div class="bar"></div>
+                    <div class="fill"></div>
+                  </div>
+                </div>
+              </div>
+              <!-- -->
+              <div class="col-xs-3">
+                <div id="progress-audio" class="c100 p0 small">
+                  <span>0%</span>
+                  <div class="slice">
+                    <div class="bar"></div>
+                    <div class="fill"></div>
+                  </div>
+                </div>
+              </div>
+              <!-- -->
+              <div class="col-xs-3">
+                <div id="progress-mux" class="c100 p0 small">
+                  <span>0%</span>
+                  <div class="slice">
+                    <div class="bar"></div>
+                    <div class="fill"></div>
+                  </div>
+                </div>
+              </div>
+              <!-- -->
+              <div class="col-xs-3">
+                <div id="progress-convert" class="c100 p0 small">
+                  <span>0%</span>
+                  <div class="slice">
+                    <div class="bar"></div>
+                    <div class="fill"></div>
+                  </div>
+                </div>
+              </div>
+            </div> <!-- /row -->
+
+            <div class="row dials-container">
+              <!-- -->
+              <div class="col-xs-3 text-muted">Download Video
+              </div>
+              <!-- -->
+              <div class="col-xs-3 text-muted">Download Audio
+              </div>
+              <!-- -->
+              <div class="col-xs-3 text-muted">Merge Parts
+              </div>
+              <!-- -->
+              <div class="col-xs-3 text-muted">Convert MP3
+              </div>
+            </div> <!-- /row -->
+
+            <!-- PROGRESS BAR -->
+            <div id="progress-container">
+              <div id="dl-progress-bar" class="progress">
+                <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>
+              </div>
+            </div>
+
+            <!-- DEBUG OUTPUT -->
+            <div id='warning-message' class="alert alert-danger hide-ui"></div>
+
+            <div id='output' class="hide-ui"></div>
+            <p><button id="toggle-debug-btn" class="btn btn-xs btn-default"><i class="fa fa-bug"></i> Toggle Debug Output</button></p>
+
+          </div>
+          <div class="modal-footer">
+            <button id="cancel-btn" type="button" class="btn btn-danger"><i class="fa fa-times"></i> Cancel</button>
+            <button id="close-btn" type="button" class="btn btn-success hide-ui" data-dismiss="modal"><i class="fa fa-check"></i> OK</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+
+		<!-- scripts -->
+
+		<script src="app/main.js?v=1"></script>
+
+	</body>
+</html>

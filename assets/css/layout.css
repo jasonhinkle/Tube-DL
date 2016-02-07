@@ -1,0 +1,30 @@
+@CHARSET "UTF-8";
+
+header {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  height: 140px;
+}
+
+main {
+  position: absolute;
+  top: 140px;
+  bottom: 40px;
+  left: 0px;
+  right: 0px;
+  overflow: auto;
+
+  padding: 20px 0px 20px 0px;
+}
+
+footer {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  height: 40px;
+
+  padding: 9px 20px 0px 20px;
+}
