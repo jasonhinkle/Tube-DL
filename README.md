@@ -7,30 +7,50 @@ Download videos from many of the most popular video streaming sites. Tube-DL is 
 
 # Usage
 
-1. Open Tube DL executable
-2. Paste the URL of the page with the Video.
-3. Select desired video or audio format
+1. Run `Tube DL`
+2. Enter or paste the URL of YouTube, Vimeo, etc page.
+3. Select whether you want the video file or audio only.
 4. Click the Download button
-5. The file will be saved to your desktop
+5. Finder/Explorer will open to the folder where the video was downloaded
 
 # Building From Source
 
-*The project is written in Javascript running in [node](https://nodejs.org/) and packaged for the desktop using [Electron](http://electron.atom.io/).*
+*The project is written in Javascript running in [node](https://nodejs.org/) and packaged for the desktop using [Electron](http://electron.atom.io/). Ensure that Node and NPM are installed and configured on the development machine.*
 
-Ensure Node and NPM are installed and configured.
+#### Install the electron dev dependencies:
 
-The following modules are required for building a stand-along executable:
+*I recommend installing the electron libraries globally, however installing them locally is fine.*
 
-* npm install electron-prebuilt -g
-* npm install electron-packager -g
-* npm install electron-prebuilt -g
+```
+npm install electron-prebuilt -g
+npm install electron-packager -g
+```
 
-1. At the command line, change directory to `Tube-DL` folder
-2. Run `npm install` to download the required libraries
-3. To start in debug mode run `npm start`
-4. To build and package the app run `npm run build`
+#### Install the application's dependencies:
 
-## Libraries and Components Used
+```
+cd "Tube DL"
+npm install
+```
+
+#### To run Tube DL for debugging/testing:
+
+```
+npm start
+```
+
+#### Build a stand-alone executable
+
+*Use osx or win build depending on your platform.*
+
+```
+npm run build:osx
+npm run build:win
+```
+
+## Credits
+
+The following libraries and executables are used by Tube DL:
 
 * [youtube-dl](https://github.com/rg3/youtube-dl)
 * [ffmpeg for Win32](http://ffmpeg.zeranoe.com/builds/)
