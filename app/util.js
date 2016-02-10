@@ -3,6 +3,8 @@
  * Misc collection of string and time utility functions
  */
 
+const shell = require('electron').shell;
+
 var path = require('path');
 
 /**
@@ -27,6 +29,33 @@ exports.getHomeDirectory = function() {
  */
 exports.getDesktopDirectory = function() {
   return exports.getHomeDirectory() + 'Desktop' + path.sep;
+}
+
+/**
+ * Return the users Desktop directory path
+ * @return string file path (with trailing slash)
+ */
+exports.getDownloadsDirectory = function() {
+  return exports.getHomeDirectory() + 'Downloads' + path.sep;
+}
+
+/**
+ *
+ */
+exports.makeDirectory = function(path) {
+  try {
+    fs.mkdirSync(path);
+  } catch(e) {
+    if ( e.code != 'EEXIST' ) throw e;
+  }
+}
+
+exports.openURL = function(url) {
+  shell.openExternal();
+}
+
+exports.openFolder = function(path) {
+  shell.showItemInFolder(path);
 }
 
 /**

@@ -11,12 +11,11 @@ const util = require('./app/util.js');
 const package = require('./package.json')
 const fs = require('fs');
 const newProcess = require('child_process').spawn;
-const shell = require('shell');
 
 // file paths
 const downloaderPath = __dirname + '/assets/bin/osx/youtube-dl';
 const converterPath = __dirname + '/assets/bin/osx/ffmpeg';
-const outputDirectory = util.getDesktopDirectory();
+const outputDirectory = util.getDownloadsDirectory() + 'Tube DL/';
 
 // application state
 var videoFileName;
@@ -69,6 +68,9 @@ function resetState() {
  */
 function onDownloadClick() {
 
+  // make sure our Tube DL subdirectory exists
+  util.makeDirectory(outputDirectory);
+
   resetState();
 
   var url = ui.getVideoURL();
@@ -118,7 +120,7 @@ function cleanupFiles(deleteVideo, deleteAudio)
 
 /**
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- * DOWNLOAD THE VIDEO FILE TO THE DESKTOP
+ * DOWNLOAD THE VIDEO FILE TO outputDirectory
  * @see https://github.com/rg3/youtube-dl/blob/master/README.md
  */
 function downloadVideo() {
@@ -247,11 +249,13 @@ function downloadVideo() {
     }
     else if (ui.getDownloadFormat() == 'Video') {
       ui.setStatus(ui.STATUS_DONE);
-      ui.out('Downloaded ' + videoFileName + ' to Desktop', 'success');
+      ui.out('Downloaded ' + videoFileName + ' to ' + outputDirectory, 'success');
       ui.setProgress(100);
+
+      util.openFolder(outputDirectory);
     }
     else {
-      ui.out('Downloaded ' + videoFileName + ' to Desktop', 'success');
+      ui.out('Downloaded ' + videoFileName + ' to ' + outputDirectory, 'success');
       ui.setProgress(100);
 
       // if no videos appear to have downloaded, then it means the file was pre-muxed from YouTube
@@ -275,9 +279,10 @@ function convertToMp3() {
   ui.setStatus(ui.STATUS_CONVERTING);
 
   if (currentVideoNumber > downloadedVideos.length) {
-    // we're done converting files
+    // THIS MEANS WE ARE DONE CONVERTING ALL DOWNLOADED FILES
     ui.setStatus(ui.STATUS_DONE);
     ui.out('Converted ' + downloadedVideos.length + ' files','success');
+    util.openFolder(outputDirectory);
     return;
   }
 
@@ -365,7 +370,7 @@ function convertToMp3() {
       cleanupFiles(false,true);
     }
     else {
-      ui.out('Converted file and saved ' + audioFileName + ' to Desktop','success');
+      ui.out('Converted file and saved ' + audioFileName + ' to ' + outputDirectory,'success');
     }
 
     if (!ui.getKeepVideoAfterConversion()) {

@@ -64,7 +64,7 @@ $("#toggle-debug-btn").on('click',function(e){
 // external links should open in the system browser, not electron shell
 $(".external-link").on("click",function(e){
   e.preventDefault();
-  shell.openExternal($(this).attr('href'));
+  util.openURL($(this).attr('href'));
 });
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~ UI SETTING ACCESSORS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
