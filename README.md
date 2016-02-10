@@ -17,11 +17,18 @@ Download videos from many of the most popular video streaming sites. Tube-DL is 
 
 *The project is written in Javascript running in [node](https://nodejs.org/) and packaged for the desktop using [Electron](http://electron.atom.io/).*
 
-1. Ensure node and npm are installed and properly configured
-2. At the command line, change directory to `Tube-DL` folder
-3. Run `npm install` to download the required libraries
-4. To start in debug mode run `npm start`
-5. To build and package the app run `npm run build`
+Ensure Node and NPM are installed and configured.
+
+The following modules are required for building a stand-along executable:
+
+* npm install electron-prebuilt -g
+* npm install electron-packager -g
+* npm install electron-prebuilt -g
+
+1. At the command line, change directory to `Tube-DL` folder
+2. Run `npm install` to download the required libraries
+3. To start in debug mode run `npm start`
+4. To build and package the app run `npm run build`
 
 ## Libraries and Components Used
 

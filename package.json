@@ -12,14 +12,14 @@
   "scripts": {
     "start": "electron .",
     "info": "electron -v",
-    "clean": "rm -rf \"Tube DL-darwin-x64\"",
-    "build": "npm run clean && electron-packager . \"Tube DL\" --platform=darwin --arch=x64 --version=0.36.7 --ignore=\"node_modules/(electron-packager|electron-prebuilt)\" --icon=./assets/images/Icon.icns",
+    "clean": "rm -rf \"Tube DL-darwin-x64\" && rm -rf \"Tube DL-mas-x64\"",
+    "build": "npm run clean && electron-packager . \"Tube DL\" --app-bundle-id=com.verysimple.tubedl --helper-bundle-id=com.verysimple.tubedl.helper --app-version=2.0.1 --platform=darwin --arch=x64 --ignore=\"node_modules/electron-*|assets/bin/win\" --icon=./assets/images/Icon.icns --overwrite",
+    "build-mas": "npm run clean && electron-packager . \"Tube DL\" --app-bundle-id=com.verysimple.tubedl --helper-bundle-id=com.verysimple.tubedl.helper --app-version=2.0.1 --platform=mas --version=0.36.7 --arch=x64 --ignore=\"node_modules/electron-*|assets/bin/win\" --icon=./assets/images/Icon.icns --overwrite && ./sign.sh",
     "test": "echo \"No tests available\"",
     "rebuild-sqlite3": "cd node_modules/sqlite3 && npm run prepublish && node-gyp configure --module_name=node_sqlite3 --module_path=../lib/binding/node-v47-darwin-x64 && node-gyp rebuild --target=0.36.7 --arch=x64 --target_platform=darwin --dist-url=https://atom.io/download/atom-shell --module_name=node_sqlite3 --module_path=../lib/binding/node-v47-darwin-x64"
   },
   "devDependencies": {
-    "electron-packager": "^5.2.1",
-    "electron-prebuilt": "^0.36.7"
+
   },
   "dependencies": {
     "bootstrap": "^3.3.6",
