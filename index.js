@@ -14,6 +14,7 @@ const dialog = require('dialog');
 // --- environment variables ---
 // NODE_ENV = 'production' in debug build, and undefined in release build
 const isDebugMode = typeof(process.env.NODE_ENV) != 'undefined';
+const isOSX = process.platform == 'darwin';
 
 /**
  * Once app is ready we can begin creating the UI
@@ -25,7 +26,7 @@ app.on('ready',function(){
 
   var mainWin = new BrowserWindow({
     width: 700,
-    height: 550,
+    height: (!isOSX) ? 590 : 550, // account for windows chrome
     resizable: isDebugMode
   });
 

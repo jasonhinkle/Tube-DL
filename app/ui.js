@@ -20,6 +20,11 @@ exports.STATUS_DONE = 32;
 // default status
 exports.status = exports.STATUS_PENDING;
 
+// style overrides for windows
+if (process.platform == 'win32') {
+  $('head').append('<link rel="stylesheet" href="assets/css/app-win.css" type="text/css" />');
+}
+
 // ~~~~~~~~~~~~~~~~~~~~~~~~~ INIT UI CONTROLS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 exports.slider = $("#quality-slider").slider({

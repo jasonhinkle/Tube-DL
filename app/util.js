@@ -8,6 +8,14 @@ const shell = require('electron').shell;
 var path = require('path');
 
 /**
+ * Return true if we're running on OSX
+ * @return bool
+ */
+exports.isOSX = function() {
+  return process.platform == 'darwin';
+}
+
+/**
  * Return the application directory path
  * @return string file path (with trailing slash)
  */

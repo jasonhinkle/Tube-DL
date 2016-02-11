@@ -13,8 +13,13 @@ const fs = require('fs');
 const newProcess = require('child_process').spawn;
 
 // file paths
-const downloaderPath = __dirname + '/assets/bin/osx/youtube-dl';
-const converterPath = __dirname + '/assets/bin/osx/ffmpeg';
+const downloaderPath = util.isOSX
+  ? __dirname + '/assets/bin/osx/youtube-dl'
+  : __dirname + '/assets/bin/win/youtube-dl.exe';
+const converterPath = util.isOSX
+  ? __dirname + '/assets/bin/osx/ffmpeg'
+  : __dirname + '/assets/bin/win/ffmpeg.exe';
+
 const outputDirectory = util.getDownloadsDirectory() + 'Tube DL/';
 
 // application state
