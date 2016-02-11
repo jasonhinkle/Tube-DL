@@ -173,44 +173,63 @@ function getMenuTemplate() {
       ]
     });
 
+    if (isOSX) {
+
       // ############ WINDOW MENU #############
-    template.push({
-      label: 'Window',
-      role: 'window',
-      submenu: [
-        {
-          label: 'Minimize',
-          accelerator: 'CmdOrCtrl+M',
-          role: 'minimize'
-        },
-        {
-          label: 'Close',
-          accelerator: 'CmdOrCtrl+W',
-          role: 'close'
-        },
-        {
-          type: 'separator'
-        },
-        {
-          label: 'Bring All to Front',
-          role: 'front'
-        }
-      ]
-    });
+      template.push({
+        label: 'Window',
+        role: 'window',
+        submenu: [
+          {
+            label: 'Minimize',
+            accelerator: 'CmdOrCtrl+M',
+            role: 'minimize'
+          },
+          {
+            label: 'Close',
+            accelerator: 'CmdOrCtrl+W',
+            role: 'close'
+          },
+          {
+            type: 'separator'
+          },
+          {
+            label: 'Bring All to Front',
+            role: 'front'
+          }
+        ]
+      });
 
-    // ############ HELP MENU #############
-    template.push({
-      label: 'Help',
-      role: 'help',
-      submenu: [
-        {
-          label: 'Visit Developer Site',
-          click: function() { require('electron').shell.openExternal('http://verysimple.com/') }
-        },
-      ]
-    });
-
+      // ############ OSX HELP MENU #############
+      template.push({
+        label: 'Help',
+        role: 'help',
+        submenu: [
+          {
+            label: 'About Tube DL',
+            role: 'about'
+          },{
+            type: 'separator'
+          },{
+            label: 'Visit Developer Site',
+            click: function() { require('electron').shell.openExternal('http://verysimple.com/') }
+          },
+        ]
+      });
+    }
+    else {
+      // ############ WINDOWS HELP MENU #############
+      template.push({
+        label: 'Help',
+        role: 'help',
+        submenu: [
+          {
+            label: 'Visit Developer Site',
+            click: function() { require('electron').shell.openExternal('http://verysimple.com/') }
+          },
+        ]
+      });
+    }
 
     return template;
-
 }
