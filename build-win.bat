@@ -13,6 +13,3 @@ rd /s /q "%APP%-win32-ia32" 2>nul
 
 REM Build executable
 electron-packager . "%APP%" --app-version=%APP_VERSION% --build-version=%APP_BUILD_VERSION% --platform=win32 --arch=ia32 --version=%ELECTRON_VERSION% --ignore="node_modules\\electron-*|assets\\bin\\osx" --icon=assets\\images\\Icon.ico --overwrite
-
-REM Build installer
-electron-builder ".\\Tube DL-win32-ia32" --platform=win --out=.\\ --config=build-win.json
