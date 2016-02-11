@@ -1,0 +1,13 @@
+@CHARSET "UTF-8";
+
+/*
+ * Style overrides for Windows
+ */
+
+ header {
+   height: 130px;
+ }
+
+ main {
+   top: 130px;
+ }

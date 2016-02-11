@@ -1,0 +1,9 @@
+{
+  "win" : {
+    "title" : "Tube DL",
+    "version" : "2.0.1",
+    "publisher": "VerySimple, Inc.",
+    "icon" : "assets\\images\\Icon.ico",
+    "verbosity": 1
+  }
+}
