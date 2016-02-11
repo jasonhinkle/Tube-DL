@@ -50,13 +50,18 @@ app.on('window-all-closed', function() {
  */
 function getMenuTemplate() {
 
-  return [
-    {
-      label: 'Master Tour',
+  var template = [];
+
+  if (isOSX) {
+
+    // ############ OSX APPLICATION MENU #############
+
+    template.push({
+      label: 'Tube DL',
       submenu: [
         {
           label: 'About Tube DL',
-          selector: 'orderFrontStandardAboutPanel:'
+          role: 'about'
         },{
           type: 'separator'
         },{
@@ -66,89 +71,146 @@ function getMenuTemplate() {
           type: 'separator'
         },{
           label: 'Hide Tube DL',
-          accelerator: 'Command+H',
-          selector: 'hide:'
+          accelerator: 'CmdOrCtrl+H',
+          role: 'hide'
         },{
           label: 'Hide Others',
-          accelerator: 'Command+Shift+H',
-          selector: 'hideOtherApplications:'
+          accelerator: 'CmdOrCtrl+Shift+H',
+          role: 'hideothers'
         },{
           label: 'Show All',
-          selector: 'unhideAllApplications:'
+          role: 'unhide'
         },{
           type: 'separator'
         },{
           label: 'Quit',
-          accelerator: 'Command+Q',
+          accelerator: 'CmdOrCtrl+Q',
           click: function() { app.quit(); }
-        },
+        }
       ]
-    },{
-      label: 'Edit',
+    });
+  }
+  else {
+
+    // ############ WINDOWS FILE MENU #############
+    template.push({
+      label: 'File',
       submenu: [
         {
-          label: 'Undo',
-          accelerator: 'Command+Z',
-          selector: 'undo:'
-        },{
-          label: 'Redo',
-          accelerator: 'Shift+Command+Z',
-          selector: 'redo:'
-        },{
-          type: 'separator'
-        },{
-          label: 'Cut',
-          accelerator: 'Command+X',
-          selector: 'cut:'
-        },{
-          label: 'Copy',
-          accelerator: 'Command+C',
-          selector: 'copy:'
-        },{
-          label: 'Paste',
-          accelerator: 'Command+V',
-          selector: 'paste:'
-        },{
-          label: 'Select All',
-          accelerator: 'Command+A',
-          selector: 'selectAll:'
-        },
+          label: 'Quit',
+          accelerator: 'CmdOrCtrl+Q',
+          click: function() { app.quit(); }
+        }
       ]
-    },{
+    });
+  }
+
+  // ############ EDIT MENU #############
+  template.push({
+    label: 'Edit',
+    submenu: [
+      {
+        label: 'Undo',
+        accelerator: 'CmdOrCtrl+Z',
+        role: 'undo'
+      },
+      {
+        label: 'Redo',
+        accelerator: 'Shift+CmdOrCtrl+Z',
+        role: 'redo'
+      },
+      {
+        type: 'separator'
+      },
+      {
+        label: 'Cut',
+        accelerator: 'CmdOrCtrl+X',
+        role: 'cut'
+      },
+      {
+        label: 'Copy',
+        accelerator: 'CmdOrCtrl+C',
+        role: 'copy'
+      },
+      {
+        label: 'Paste',
+        accelerator: 'CmdOrCtrl+V',
+        role: 'paste'
+      },
+      {
+        label: 'Select All',
+        accelerator: 'CmdOrCtrl+A',
+        role: 'selectall'
+      },
+    ]
+  });
+
+    // ############ VIEW MENU #############
+    template.push({
       label: 'View',
       submenu: [
         {
           label: 'Reload',
-          accelerator: 'Command+R',
-          click: function() { BrowserWindow.getFocusedWindow().webContents.reloadIgnoringCache(); }
-        },{
-          label: 'Toggle DevTools',
-          accelerator: 'Alt+Command+I',
-          click: function() { BrowserWindow.getFocusedWindow().toggleDevTools(); }
+          accelerator: 'CmdOrCtrl+R',
+          click: function(item, focusedWindow) {
+            if (focusedWindow)
+              focusedWindow.reload();
+          }
+        },
+        {
+          label: 'Toggle Developer Tools',
+          accelerator: (function() {
+            if (isOSX)
+              return 'Alt+Command+I';
+            else
+              return 'Ctrl+Shift+I';
+          })(),
+          click: function(item, focusedWindow) {
+            if (focusedWindow)
+              focusedWindow.toggleDevTools();
+          }
         },
       ]
-    },{
+    });
+
+      // ############ WINDOW MENU #############
+    template.push({
       label: 'Window',
+      role: 'window',
       submenu: [
         {
           label: 'Minimize',
-          accelerator: 'Command+M',
-          selector: 'performMiniaturize:'
-        },{
+          accelerator: 'CmdOrCtrl+M',
+          role: 'minimize'
+        },
+        {
           label: 'Close',
-          accelerator: 'Command+W',
-          selector: 'performClose:'
-        },{
+          accelerator: 'CmdOrCtrl+W',
+          role: 'close'
+        },
+        {
           type: 'separator'
-        },{
+        },
+        {
           label: 'Bring All to Front',
-          selector: 'arrangeInFront:'
+          role: 'front'
+        }
+      ]
+    });
+
+    // ############ HELP MENU #############
+    template.push({
+      label: 'Help',
+      role: 'help',
+      submenu: [
+        {
+          label: 'Visit Developer Site',
+          click: function() { require('electron').shell.openExternal('http://verysimple.com/') }
         },
       ]
-    },{
-      label: 'Help',
-      submenu: []
-    },
-  ];
+    });
+
+
+    return template;
 
 }
