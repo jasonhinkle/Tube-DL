@@ -257,7 +257,7 @@ function downloadVideo() {
       ui.out('Downloaded ' + videoFileName + ' to ' + outputDirectory, 'success');
       ui.setProgress(100);
 
-      util.openFolder(outputDirectory);
+      util.openFolder(outputDirectory + videoFileName);
     }
     else {
       ui.out('Downloaded ' + videoFileName + ' to ' + outputDirectory, 'success');
@@ -287,7 +287,7 @@ function convertToMp3() {
     // THIS MEANS WE ARE DONE CONVERTING ALL DOWNLOADED FILES
     ui.setStatus(ui.STATUS_DONE);
     ui.out('Converted ' + downloadedVideos.length + ' files','success');
-    util.openFolder(outputDirectory);
+    util.openFolder(outputDirectory + audioFileName);
     return;
   }
 

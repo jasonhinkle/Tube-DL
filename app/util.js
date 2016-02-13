@@ -63,7 +63,8 @@ exports.openURL = function(url) {
 }
 
 exports.openFolder = function(path) {
-  shell.showItemInFolder(path);
+  var cleanPath = path.replace(/\/$/, ""); // strip trailing slash
+  shell.showItemInFolder(cleanPath);
 }
 
 /**
