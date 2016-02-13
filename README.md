@@ -5,25 +5,34 @@ Download videos from many of the most popular video streaming sites. Tube-DL is 
 ![Screenshot](https://raw.github.com/jasonhinkle/Tube-DL/master/assets/images/screenshot-1.png)
 ![Screenshot](https://raw.github.com/jasonhinkle/Tube-DL/master/assets/images/screenshot-2.png)
 
-# Usage
+# How To Use Tube-DL
+
+Download a pre-built installer from the [Releases](https://github.com/jasonhinkle/Tube-DL/releases) page.
 
 1. Run `Tube DL`
-2. Enter or paste the URL of YouTube, Vimeo, etc page.
+2. Enter or paste the URL of YouTube, Vimeo, etc page into the URL field.
 3. Select whether you want the video file or audio only.
 4. Click the Download button
-5. Finder/Explorer will open to the folder where the video was downloaded
+5. Finder/Explorer will open to the folder where the file was downloaded
 
 # Building From Source
 
 *The project is written in Javascript running in [node](https://nodejs.org/) and packaged for the desktop using [Electron](http://electron.atom.io/). Ensure that Node and NPM are installed and configured on the development machine.*
 
-#### Install the electron dev dependencies:
+#### Install the required electron builder tools:
 
 *I recommend installing the electron libraries globally, however installing them locally is fine.*
 
 ```
+npm install electron -g
 npm install electron-prebuilt -g
 npm install electron-packager -g
+```
+
+Optionally to create OSX and Win32 installers:
+```
+npm install electron-osx-sign -g
+npm install electron-builder -g
 ```
 
 #### Install the application's dependencies:
@@ -33,7 +42,7 @@ cd "Tube DL"
 npm install
 ```
 
-#### To run Tube DL for debugging/testing:
+#### Run Tube DL in debug/test mode:
 
 ```
 npm start
