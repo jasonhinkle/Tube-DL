@@ -24,7 +24,6 @@ Download a pre-built installer from the [Releases](https://github.com/jasonhinkl
 *I recommend installing the electron libraries globally, however installing them locally is fine.*
 
 ```
-npm install electron -g
 npm install electron-prebuilt -g
 npm install electron-packager -g
 ```
