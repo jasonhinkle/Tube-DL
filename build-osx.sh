@@ -13,4 +13,4 @@ ELECTRON_VERSION="0.36.8"
 rm -rf "$APP-darwin-x64"
 
 # Build executable
-electron-packager . "$APP" --app-bundle-id=$APP_BUNDLE_ID --helper-bundle-id=$APP_BUNDLE_ID.helper --app-version=$APP_VERSION --build-version=$APP_BUILD_VERSION --platform=darwin --arch=x64 --version=$ELECTRON_VERSION --ignore="node_modules/electron-*|assets/bin/win" --icon=./assets/images/Icon.icns --overwrite
+electron-packager . "$APP" --app-bundle-id=$APP_BUNDLE_ID --helper-bundle-id=$APP_BUNDLE_ID.helper --app-version=$APP_VERSION --build-version=$APP_BUILD_VERSION --platform=darwin --arch=x64 --version=$ELECTRON_VERSION --ignore="node_modules/electron-*|build-*|assets/bin/win" --icon=./assets/images/Icon.icns --overwrite
