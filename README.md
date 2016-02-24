@@ -60,9 +60,13 @@ npm run build:win
 
 The following libraries and executables are used by Tube DL:
 
-* [youtube-dl](https://github.com/rg3/youtube-dl)
-* [ffmpeg for Win32](http://ffmpeg.zeranoe.com/builds/)
-* [ffmpeg for OSX](https://evermeet.cx/ffmpeg/)
+* [youtube-dl](https://github.com/rg3/youtube-dl) (Public Domain)
+* [ffmpeg for Win32](http://ffmpeg.zeranoe.com/builds/) (GPL 3.0)
+* [ffmpeg for OSX](https://evermeet.cx/ffmpeg/) (GPL 3.0)
+* [Bootstrap](http://getbootstrap.com/) (MIT)
+* [Bootstrap Slider](https://github.com/seiyria/bootstrap-slider) (MIT)
+* [Bootstrap Switch](http://www.bootstrap-switch.org/) (Apache 2.0)
+* [Circular Percentage Bar](http://www.cssscript.com/pure-css-circular-percentage-bar/) (Public Domain)
 
 ## License
 
