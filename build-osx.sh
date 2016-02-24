@@ -3,9 +3,9 @@
 # ---------------- CONFIGURATION ----------------
 APP="Tube DL"
 APP_BUNDLE_ID="com.verysimple.tubedl"
-APP_VERSION="2.0.1"
+APP_VERSION="2.0.2"
 APP_BUILD_VERSION="2.0.102"
-ELECTRON_VERSION="0.36.7"
+ELECTRON_VERSION="0.36.8"
 
 # ----------------  BUILD FOR DARWIN ---------------------
 
