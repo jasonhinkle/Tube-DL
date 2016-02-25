@@ -2,4 +2,6 @@ node_modules
 Tube DL-darwin-x64
 Tube DL-mas-x64
 Tube DL-win32-ia32
-Tube DL Setup.exe
+*.exe
+*.zip
+*.pfx
